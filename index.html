@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Builder</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="author" content="Nicholas Koldys" />
+    <meta name="copyright" content="Nicholas Koldys" />
+    <meta name="keywords" content="quiz, maker, quiz, json"/>
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <div id="app-container">
+        <h1>Quiz Builder</h1>
+        <div id="tabs">
+            <button class="tab-button active" onclick="showTab('edit-tab')">Edit</button>
+            <button class="tab-button" onclick="showTab('test-tab')">Test</button>
+            <button class="tab-button" onclick="showTab('share-tab')">Export</button>
+        </div>
+
+        <div id="options-menu">
+            <h3 id="options-menu-toggle">Options <span>▼</span></h3>
+            <div class="option-group hidden">
+                <label><input type="checkbox" id="must-answer-option" checked> Must answer before continuing</label><br>
+                <label><input type="checkbox" id="three-tries-option"> 3 tries then restart</label><br>
+                <label><input type="checkbox" id="view-hint-option"> Viewable hint after 2 tries</label>
+            </div>
+        </div>
+
+        <div id="edit-tab" class="tab-content active">
+            <h2>Edit Quiz</h2>
+            <div id="question-components-palette">
+                <h4>Add Question Component:</h4>
+                <button onclick="addQuestion('multiple_choice')">Add Multiple Choice</button>
+                <button onclick="addQuestion('drag_and_drop')">Add Drag and Drop</button>
+                <button onclick="addQuestion('text_input')">Add Text Input</button>
+                <button onclick="addQuestion('paragraph_prompt')">Add Paragraph Prompt</button>
+            </div>
+            <hr>
+            <div id="quiz-editor-area">
+                </div>
+        </div>
+
+        <div id="test-tab" class="tab-content">
+            <div id="quiz-test-area">
+                </div>
+        </div>
+
+        <div id="share-tab" class="tab-content">
+            <h2>Share Quiz</h2>
+            <textarea id="json-output" style="width: 100%; height: 300px;"></textarea>
+            <button onclick="exportQuiz()">Export to JSON</button>
+            <button onclick="importQuiz()">Import from JSON</button>
+            <div class="share-url-container">
+                <label for="share-url">Shareable URL:</label>
+                <input type="text" id="share-url" readonly>
+                <button onclick="copyShareUrl()">Copy</button>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
